@@ -59,7 +59,7 @@ export function Contact() {
           <span className="text-[#76946A]">эффективное</span> вместе
         </h2>
         <p className="font-sans text-base text-muted-foreground max-w-lg leading-relaxed mb-12">
-          Открыт к фриланс-возможностям и бэкенд-контрактам. Пишите — отвечаю быстро.
+          Открыт к работе. Пишите — отвечаю быстро.
         </p>
 
         {/* Social links */}
