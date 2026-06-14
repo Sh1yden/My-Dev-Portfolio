@@ -130,7 +130,7 @@ export function Contact() {
           &mdash; Kirill (Shayden & Sh1yden) &copy; {new Date().getFullYear()}
         </p>
         <p className="font-mono text-xs text-muted-foreground">
-          TODO: написать что-то умное
+          <span className="text-[#76946A]">TODO:</span> написать что-то умное
         </p>
       </footer>
     </section>
