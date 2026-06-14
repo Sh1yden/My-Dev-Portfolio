@@ -15,25 +15,25 @@ type Category = {
 const categories: Category[] = [
   {
     icon: Terminal,
-    label: "Languages",
+    label: "Языки",
     color: "#FFA066",
     items: ["Python", "SQL"],
   },
   {
     icon: Server,
-    label: "Frameworks",
+    label: "Фреймворки",
     color: "#7E9CD8",
     items: ["FastAPI", "Django", "SQLAlchemy", "aiogram"],
   },
   {
     icon: Database,
-    label: "Databases",
+    label: "Датабазы",
     color: "#76946A",
     items: ["PostgreSQL", "SQLite", "SQLAlchemy", "DjangoORM", "asyncpg", "Redis"],
   },
   {
     icon: Wrench,
-    label: "DevOps & Tools",
+    label: "Девопс & Инструменты",
     color: "#FFA066",
     items: ["Linux / WSL 2", "Cloudflare Tunnels", "Docker", "Git"],
   },
