@@ -6,7 +6,7 @@
 
 @theme inline {
   --font-heading: var(--font-jetbrains), 'JetBrains Mono', monospace;
-  --font-sans: var(--font-jetbrains), 'JetBrains Mono', monospace;
+  --font-sans: var(--font-inter), 'Inter', sans-serif;
   --font-mono: var(--font-jetbrains), 'JetBrains Mono', monospace;
 
   /* Kanagawa custom accent colors */
