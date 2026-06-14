@@ -29,7 +29,7 @@ export function Hero() {
       <h1 className="font-mono text-4xl font-bold leading-tight text-foreground sm:text-5xl lg:text-6xl animate-fade-in-up opacity-0 animate-delay-100 text-balance">
         Привет, я{" "}
         <span className="text-[#957FB8]">Кирилл</span>{" "}
-        <span className="text-[#957FB8]">(Shayden)</span>
+        <span className="text-[#957FB8]">(Shayden & Sh1yden)</span>
         <span className="cursor-blink text-[#7E9CD8]" aria-hidden="true">▌</span>
       </h1>
 
