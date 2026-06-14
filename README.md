@@ -1,33 +1,136 @@
 # My-Dev-Portfolio
 
-This is a [Next.js](https://nextjs.org) project bootstrapped with [v0](https://v0.app).
+Персональный portfolio-сайт Python Backend Developer'а — Кирилл (Shayden).  
+Тёмная тема в стиле [Kanagawa](https://github.com/rebelot/kanagawa.nvim), шрифт JetBrains Mono, GitHub-style карточки проектов.
 
-## Built with v0
+---
 
-This repository is linked to a [v0](https://v0.app) project. You can continue developing by visiting the link below -- start new chats to make changes, and v0 will push commits directly to this repo. Every merge to `main` will automatically deploy.
+## Стек технологий
 
-[Continue working on v0 →](https://v0.app/chat/projects/prj_spcCPpBuC36dv0QTooGUXLdnHvIU)
+| Слой | Технология |
+|---|---|
+| Framework | [Next.js 16](https://nextjs.org) (App Router) |
+| UI-библиотека | [shadcn/ui](https://ui.shadcn.com) + [Base UI](https://base-ui.com) |
+| Стили | [Tailwind CSS v4](https://tailwindcss.com) |
+| Иконки | [Lucide React](https://lucide.dev) |
+| Шрифты | JetBrains Mono + Inter (Google Fonts) |
+| Язык | TypeScript |
+| Аналитика | Vercel Analytics |
+| Деплой | [Vercel](https://vercel.com) |
 
-## Getting Started
+---
 
-First, run the development server:
+## Архитектура
+
+```
+Однострочное SPA (Single Page Application)
+  └── Next.js App Router
+        ├── Server Components — layout, page (SEO, metadata)
+        └── Client Components — header (смена языка, мобильное меню)
+```
+
+Сайт полностью статичен — никакого бэкенда, баз данных и API-запросов.  
+Все данные (проекты, стек, контакты) хранятся прямо в компонентах в виде TypeScript-объектов.  
+Тема — Kanagawa Dark, реализована через CSS-переменные в `globals.css`.
+
+---
+
+## Структура проекта
+
+```
+my-dev-portfolio/
+├── app/
+│   ├── globals.css        # Kanagawa-тема, CSS-переменные, анимации
+│   ├── layout.tsx         # Метаданные, шрифты, viewport
+│   └── page.tsx           # Сборка всех секций
+│
+├── components/
+│   ├── header.tsx         # Навигация, смена языка RU/EN, мобильное меню
+│   ├── hero.tsx           # Приветственная секция, мигающий курсор
+│   ├── tech-stack.tsx     # Сетка технологий (Languages, Frameworks, DB, DevOps)
+│   ├── projects.tsx       # GitHub-style карточки проектов
+│   ├── contact.tsx        # Карточки соцсетей, подвал
+│   └── ui/
+│       └── button.tsx     # shadcn Button
+│
+├── public/                # Статика (иконки favicon)
+├── next.config.mjs
+├── tsconfig.json
+└── package.json
+```
+
+---
+
+## Запуск локально
+
+### Требования
+
+- [Node.js](https://nodejs.org) **18+**
+- [pnpm](https://pnpm.io) (рекомендуется) или npm / yarn
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
+# Установить pnpm глобально, если нет
+npm install -g pnpm
+```
+
+### 1. Клонировать репозиторий
+
+```bash
+git clone https://github.com/Sh1yden/My-Dev-Portfolio.git
+cd My-Dev-Portfolio
+```
+
+### 2. Установить зависимости
+
+```bash
+pnpm install
+```
+
+### 3. Запустить dev-сервер
+
+```bash
 pnpm dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Открыть в браузере: [http://localhost:3000](http://localhost:3000)
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### 4. Сборка для продакшена
 
-## Learn More
+```bash
+pnpm build
+pnpm start
+```
 
-To learn more, take a look at the following resources:
+### 5. Линтер
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-- [v0 Documentation](https://v0.app/docs) - learn about v0 and how to use it.
+```bash
+pnpm lint
+```
+
+---
+
+## Деплой на Vercel
+
+Самый простой способ — нажать кнопку:
+
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/Sh1yden/My-Dev-Portfolio)
+
+Или через CLI:
+
+```bash
+npm i -g vercel
+vercel
+```
+
+---
+
+## 💜 Вопросы и контакты
+
+Если есть вопросы по коду, хочешь предложить улучшение или просто написать — welcome:
+
+| | |
+|---|---|
+| **Telegram** | [@shayden](https://t.me/shayden) |
+| **VK** | [vk.com/shayden](https://vk.com/shayden) |
+| **GitHub** | [github.com/Sh1yden](https://github.com/Sh1yden) |
+| **LinkedIn** | [linkedin.com/in/shayden](https://linkedin.com/in/shayden) |
