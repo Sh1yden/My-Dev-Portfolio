@@ -31,8 +31,7 @@ export function Hero() {
         <span className="text-[#957FB8]">Кирилл</span>{" "}
         <span className="text-[#957FB8]">(Shayden)</span>
         <span
-          className="cursor-blink ml-1.5 inline-block bg-[#7E9CD8]"
-          style={{ height: "0.85em", verticalAlign: "middle" }}
+          className="cursor-blink"
           aria-hidden="true"
         />
       </h1>

@@ -105,30 +105,21 @@
 }
 
 @keyframes vscode-cursor {
-  0%, 100% {
-    opacity: 1;
-    transform: scaleY(1);
-  }
-  45% {
-    opacity: 1;
-    transform: scaleY(1);
-  }
-  50% {
-    opacity: 0;
-    transform: scaleY(0.6);
-  }
-  95% {
-    opacity: 0;
-    transform: scaleY(0.6);
-  }
+  0%, 45%  { opacity: 1; }
+  55%, 95% { opacity: 0; }
+  100%     { opacity: 1; }
 }
 
 .cursor-blink {
   display: inline-block;
   width: 2px;
+  /* высота подгоняется под размер шрифта h1 */
+  height: 0.9em;
+  vertical-align: text-bottom;
+  background-color: #7E9CD8;
   border-radius: 1px;
+  margin-left: 4px;
   animation: vscode-cursor 1.1s ease-in-out infinite;
-  transform-origin: center bottom;
 }
 
 @keyframes fade-in-up {
