@@ -30,10 +30,7 @@ export function Hero() {
         Привет, я{" "}
         <span className="text-[#957FB8]">Кирилл</span>{" "}
         <span className="text-[#957FB8]">(Shayden)</span>
-        <span
-          className="cursor-blink"
-          aria-hidden="true"
-        />
+        <span className="cursor-blink text-[#7E9CD8]" aria-hidden="true">▌</span>
       </h1>
 
       {/* Subtitle terminal line */}
