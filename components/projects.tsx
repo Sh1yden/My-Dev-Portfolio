@@ -1,6 +1,6 @@
 "use client"
 
-import { MoreHorizontal } from "lucide-react"
+
 
 type Project = {
   title: string
@@ -122,13 +122,7 @@ export function Projects() {
                 <span className="ml-1 flex-shrink-0 rounded-full border border-border px-2 py-0.5 font-sans text-[10px] text-muted-foreground">
                   Public
                 </span>
-                <button
-                  type="button"
-                  className="ml-auto text-muted-foreground hover:text-foreground transition-colors flex-shrink-0"
-                  aria-label="Дополнительные действия"
-                >
-                  <MoreHorizontal className="size-4" />
-                </button>
+
               </div>
 
               {/* Description */}
