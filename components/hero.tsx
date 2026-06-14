@@ -70,7 +70,7 @@ export function Hero() {
         <div className="flex flex-col gap-1" aria-hidden="true">
           <span className="block h-px w-12 bg-border" />
         </div>
-        <span className="font-mono text-xs text-muted-foreground">scroll down</span>
+        <span className="font-mono text-xs text-muted-foreground">Пролестние вниз ;)</span>
       </div>
     </section>
   )
