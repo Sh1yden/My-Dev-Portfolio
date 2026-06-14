@@ -17,19 +17,19 @@ const categories: Category[] = [
     icon: Terminal,
     label: "Languages",
     color: "#FFA066",
-    items: ["Python", "Asyncio", "SQL"],
+    items: ["Python", "SQL"],
   },
   {
     icon: Server,
     label: "Frameworks",
     color: "#7E9CD8",
-    items: ["FastAPI", "SQLAlchemy", "aiogram"],
+    items: ["FastAPI", "Django", "SQLAlchemy", "aiogram"],
   },
   {
     icon: Database,
     label: "Databases",
     color: "#76946A",
-    items: ["PostgreSQL", "asyncpg", "Redis"],
+    items: ["PostgreSQL", "SQLite", "SQLAlchemy", "DjangoORM", "asyncpg", "Redis"],
   },
   {
     icon: Wrench,

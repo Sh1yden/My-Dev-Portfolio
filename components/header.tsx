@@ -3,14 +3,28 @@
 import { useState } from "react"
 import { GitFork, Menu, X } from "lucide-react"
 
-const navLinks = [
-  { label: "Стек", href: "#stack" },
-  { label: "Проекты", href: "#projects" },
-  { label: "Контакты", href: "#contact" },
-]
+type Lang = "RU" | "EN"
+
+const navLinks: Record<Lang, { label: string; href: string }[]> = {
+  RU: [
+    { label: "Стек", href: "#stack" },
+    { label: "Проекты", href: "#projects" },
+    { label: "Контакты", href: "#contact" },
+  ],
+  EN: [
+    { label: "Stack", href: "#stack" },
+    { label: "Projects", href: "#projects" },
+    { label: "Contact", href: "#contact" },
+  ],
+}
 
 export function Header() {
   const [open, setOpen] = useState(false)
+  const [lang, setLang] = useState<Lang>("RU")
+
+  const links = navLinks[lang]
+
+  const toggleLang = () => setLang((l) => (l === "RU" ? "EN" : "RU"))
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 border-b border-border bg-background/80 backdrop-blur-md">
@@ -26,7 +40,7 @@ export function Header() {
 
         {/* Desktop nav */}
         <nav className="hidden items-center gap-6 md:flex" aria-label="Основная навигация">
-          {navLinks.map((link) => (
+          {links.map((link) => (
             <a
               key={link.href}
               href={link.href}
@@ -48,10 +62,11 @@ export function Header() {
 
           <button
             type="button"
+            onClick={toggleLang}
             className="cursor-pointer font-mono text-xs border border-border rounded px-2 py-1 text-muted-foreground hover:text-foreground hover:border-foreground/30 transition-colors"
             aria-label="Переключить язык"
           >
-            RU / EN
+            {lang === "RU" ? "RU / EN" : "EN / RU"}
           </button>
         </nav>
 
@@ -73,7 +88,7 @@ export function Header() {
           className="border-t border-border bg-background/95 px-6 py-4 md:hidden flex flex-col gap-4"
           aria-label="Мобильная навигация"
         >
-          {navLinks.map((link) => (
+          {links.map((link) => (
             <a
               key={link.href}
               href={link.href}
@@ -91,13 +106,15 @@ export function Header() {
               aria-label="GitHub"
               className="text-muted-foreground transition-colors hover:text-foreground"
             >
-            <GitFork className="size-4" />
+              <GitFork className="size-4" />
             </a>
             <button
               type="button"
+              onClick={toggleLang}
               className="cursor-pointer font-mono text-xs border border-border rounded px-2 py-1 text-muted-foreground hover:text-foreground transition-colors"
+              aria-label="Переключить язык"
             >
-              RU / EN
+              {lang === "RU" ? "RU / EN" : "EN / RU"}
             </button>
           </div>
         </nav>
