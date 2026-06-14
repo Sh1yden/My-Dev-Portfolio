@@ -5,9 +5,9 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
-  --font-heading: var(--font-jetbrains), 'JetBrains Mono Fallback', monospace;
-  --font-sans: var(--font-inter), 'Inter Fallback', sans-serif;
-  --font-mono: var(--font-jetbrains), 'JetBrains Mono Fallback', monospace;
+  --font-heading: var(--font-jetbrains), 'JetBrains Mono', monospace;
+  --font-sans: var(--font-jetbrains), 'JetBrains Mono', monospace;
+  --font-mono: var(--font-jetbrains), 'JetBrains Mono', monospace;
 
   /* Kanagawa custom accent colors */
   --color-k-green: var(--k-green);
