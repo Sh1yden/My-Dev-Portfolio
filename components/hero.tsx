@@ -38,6 +38,9 @@ export function Hero() {
         <p className="font-mono text-lg text-[#7E9CD8] sm:text-xl">
           &gt; Python Backend Developer
         </p>
+        <p className="font-mono text-sm text-muted-foreground mt-2">
+          <span className="text-[#76946A]">#</span> TODO: написать что-то умное
+        </p>
       </div>
 
       {/* Bio */}
