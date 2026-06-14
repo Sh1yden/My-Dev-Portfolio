@@ -42,8 +42,7 @@ export function Hero() {
 
       {/* Bio */}
       <p className="mt-6 max-w-2xl font-sans text-base leading-relaxed text-muted-foreground sm:text-lg animate-fade-in-up opacity-0 animate-delay-300">
-        Проектирую быстрые асинхронные API, оптимизирую базы данных, настраиваю безопасные
-        сетевые туннели и пишу чистый, масштабируемый код.{" "}
+        Проектирую быстрые асинхронные API, Телеграм ботов, пишу чистый, масштабируемый код.{" "}
         <span className="text-foreground">Открыт к фриланс-задачам и интересным проектам.</span>
       </p>
 
