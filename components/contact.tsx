@@ -130,11 +130,7 @@ export function Contact() {
           &mdash; Kirill (Shayden) &copy; {new Date().getFullYear()}
         </p>
         <p className="font-mono text-xs text-muted-foreground">
-          Built with{" "}
-          <span className="text-[#7E9CD8]">FastAPI</span>{" "}
-          in mind,{" "}
-          <span className="text-[#76946A]">Next.js</span>{" "}
-          in practice.
+          TODO: написать что-то умное
         </p>
       </footer>
     </section>
