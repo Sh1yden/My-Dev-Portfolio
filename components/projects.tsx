@@ -97,7 +97,7 @@ export function Projects() {
             Проекты
           </h2>
           <p className="mt-3 font-sans text-sm text-muted-foreground max-w-md">
-            Избранные работы — от Telegram-ботов до веб-сервисов и desktop-приложений.
+            Избранные работы. От Telegram-ботов до веб-сервисов и desktop-приложений.
           </p>
         </div>
 
