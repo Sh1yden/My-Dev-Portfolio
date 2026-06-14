@@ -127,7 +127,7 @@ export function Contact() {
       <footer className="mx-auto max-w-6xl mt-24 pt-8 border-t border-border flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
         <p className="font-mono text-xs text-muted-foreground">
           <span className="text-[#FFA066]">&gt; shayden.ru</span>{" "}
-          &mdash; Kirill (Shayden) &copy; {new Date().getFullYear()}
+          &mdash; Kirill (Shayden & Sh1yden) &copy; {new Date().getFullYear()}
         </p>
         <p className="font-mono text-xs text-muted-foreground">
           TODO: написать что-то умное
