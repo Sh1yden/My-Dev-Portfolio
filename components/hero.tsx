@@ -1,6 +1,6 @@
-"use client"
+"use client";
 
-import { ArrowRight, Mail } from "lucide-react"
+import { ArrowRight, Mail } from "lucide-react";
 
 export function Hero() {
   return (
@@ -27,10 +27,11 @@ export function Hero() {
 
       {/* Main heading */}
       <h1 className="font-mono text-4xl font-bold leading-tight text-foreground sm:text-5xl lg:text-6xl animate-fade-in-up opacity-0 animate-delay-100 text-balance">
-        Привет, я{" "}
-        <span className="text-[#957FB8]">Кирилл</span>{" "}
+        Привет, я <span className="text-[#957FB8]">Кирилл</span>{" "}
         <span className="text-[#957FB8]">(Shayden & Sh1yden)</span>
-        <span className="cursor-blink text-[#7E9CD8]" aria-hidden="true">▌</span>
+        <span className="cursor-blink text-[#7E9CD8]" aria-hidden="true">
+          ▌
+        </span>
       </h1>
 
       {/* Subtitle terminal line */}
@@ -42,8 +43,11 @@ export function Hero() {
 
       {/* Bio */}
       <p className="mt-6 max-w-2xl font-sans text-base leading-relaxed text-muted-foreground sm:text-lg animate-fade-in-up opacity-0 animate-delay-300">
-        Проектирую быстрые асинхронные API, Телеграм ботов, пишу чистый, масштабируемый код.{" "}
-        <span className="text-foreground">Открыт к фриланс-задачам и интересным проектам.</span>
+        Проектирую быстрые асинхронные API и телеграм ботов. Пишу чистый,
+        масштабируемый код.{" "}
+        <span className="text-foreground">
+          Открыт к фриланс-задачам и интересным проектам.
+        </span>
       </p>
 
       {/* CTA buttons */}
@@ -69,8 +73,10 @@ export function Hero() {
         <div className="flex flex-col gap-1" aria-hidden="true">
           <span className="block h-px w-12 bg-border" />
         </div>
-        <span className="font-mono text-xs text-muted-foreground">Пролестние вниз ;)</span>
+        <span className="font-mono text-xs text-muted-foreground">
+          Пролистните вниз ;)
+        </span>
       </div>
     </section>
-  )
+  );
 }

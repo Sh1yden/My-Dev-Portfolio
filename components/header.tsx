@@ -1,9 +1,9 @@
-"use client"
+"use client";
 
-import { useState } from "react"
-import { GitFork, Menu, X } from "lucide-react"
+import { useState } from "react";
+import { GitFork, Menu, X } from "lucide-react";
 
-type Lang = "RU" | "EN"
+type Lang = "RU" | "EN";
 
 const navLinks: Record<Lang, { label: string; href: string }[]> = {
   RU: [
@@ -16,15 +16,15 @@ const navLinks: Record<Lang, { label: string; href: string }[]> = {
     { label: "Projects", href: "#projects" },
     { label: "Contact", href: "#contact" },
   ],
-}
+};
 
 export function Header() {
-  const [open, setOpen] = useState(false)
-  const [lang, setLang] = useState<Lang>("RU")
+  const [open, setOpen] = useState(false);
+  const [lang, setLang] = useState<Lang>("RU");
 
-  const links = navLinks[lang]
+  const links = navLinks[lang];
 
-  const toggleLang = () => setLang((l) => (l === "RU" ? "EN" : "RU"))
+  const toggleLang = () => setLang((l) => (l === "RU" ? "EN" : "RU"));
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 border-b border-border bg-background/80 backdrop-blur-md">
@@ -32,14 +32,17 @@ export function Header() {
         {/* Logo */}
         <a
           href="#"
-          className="font-mono text-sm font-semibold text-[#FFA066] hover:text-[#FFA066]/80 transition-colors"
+          className="font-mono text-sm font-semibold text-[#769] hover:text-[#769]/80 transition-colors"
           aria-label="Главная"
         >
           &gt; shayden.ru
         </a>
 
         {/* Desktop nav */}
-        <nav className="hidden items-center gap-6 md:flex" aria-label="Основная навигация">
+        <nav
+          className="hidden items-center gap-6 md:flex"
+          aria-label="Основная навигация"
+        >
           {links.map((link) => (
             <a
               key={link.href}
@@ -51,7 +54,7 @@ export function Header() {
           ))}
 
           <a
-            href="https://github.com"
+            href="https://github.com/Sh1yden/My-Dev-Portfolio"
             target="_blank"
             rel="noopener noreferrer"
             aria-label="GitHub"
@@ -100,7 +103,7 @@ export function Header() {
           ))}
           <div className="flex items-center gap-4 pt-2 border-t border-border">
             <a
-              href="https://github.com"
+              href="https://github.com/Sh1yden/My-Dev-Portfolio"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="GitHub"
@@ -120,5 +123,5 @@ export function Header() {
         </nav>
       )}
     </header>
-  )
+  );
 }

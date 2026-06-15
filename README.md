@@ -1,22 +1,21 @@
 # My-Dev-Portfolio
 
-Персональный portfolio-сайт Python Backend Developer'а — Кирилл (Shayden).  
+Мой персональный portfolio-сайт.
 Тёмная тема в стиле [Kanagawa](https://github.com/rebelot/kanagawa.nvim), шрифт JetBrains Mono, GitHub-style карточки проектов.
 
 ---
 
 ## Стек технологий
 
-| Слой | Технология |
-|---|---|
-| Framework | [Next.js 16](https://nextjs.org) (App Router) |
+| Слой          | Технология                                                          |
+| ------------- | ------------------------------------------------------------------- |
+| Framework     | [Next.js 16](https://nextjs.org) (App Router)                       |
 | UI-библиотека | [shadcn/ui](https://ui.shadcn.com) + [Base UI](https://base-ui.com) |
-| Стили | [Tailwind CSS v4](https://tailwindcss.com) |
-| Иконки | [Lucide React](https://lucide.dev) |
-| Шрифты | JetBrains Mono + Inter (Google Fonts) |
-| Язык | TypeScript |
-| Аналитика | Vercel Analytics |
-| Деплой | [Vercel](https://vercel.com) |
+| Стили         | [Tailwind CSS v4](https://tailwindcss.com)                          |
+| Иконки        | [Lucide React](https://lucide.dev)                                  |
+| Шрифты        | JetBrains Mono + Inter (Google Fonts)                               |
+| Язык          | TypeScript                                                          |
+| Деплой        | Собственный сайт [Shayden](https://shayden.ru)                      |
 
 ---
 
@@ -29,8 +28,8 @@
         └── Client Components — header (смена языка, мобильное меню)
 ```
 
-Сайт полностью статичен — никакого бэкенда, баз данных и API-запросов.  
-Все данные (проекты, стек, контакты) хранятся прямо в компонентах в виде TypeScript-объектов.  
+Сайт полностью статичен — никакого бэкенда, баз данных и API-запросов.
+Все данные (проекты, стек, контакты) хранятся прямо в компонентах в виде TypeScript-объектов.
 Тема — Kanagawa Dark, реализована через CSS-переменные в `globals.css`.
 
 ---
@@ -109,28 +108,8 @@ pnpm lint
 
 ---
 
-## Деплой на Vercel
+## 💜 Вопросы, контакты
 
-Самый простой способ — нажать кнопку:
+Для вопросов и предложений создавайте Issues в репозитории или же пишите в телеграмм который указан в профиле.
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/Sh1yden/My-Dev-Portfolio)
-
-Или через CLI:
-
-```bash
-npm i -g vercel
-vercel
-```
-
----
-
-## 💜 Вопросы и контакты
-
-Если есть вопросы по коду, хочешь предложить улучшение или просто написать — welcome:
-
-| | |
-|---|---|
-| **Telegram** | [@shayden](https://t.me/shayden) |
-| **VK** | [vk.com/shayden](https://vk.com/shayden) |
-| **GitHub** | [github.com/Sh1yden](https://github.com/Sh1yden) |
-| **LinkedIn** | [linkedin.com/in/shayden](https://linkedin.com/in/shayden) |
+PS Любой помощи или совету буду очень благодарен.
