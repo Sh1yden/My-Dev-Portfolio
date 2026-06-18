@@ -1,40 +1,22 @@
 # My-Dev-Portfolio
 
-Мой персональный portfolio-сайт.
-Тёмная тема в стиле [Kanagawa](https://github.com/rebelot/kanagawa.nvim), шрифт JetBrains Mono, GitHub-style карточки проектов.
+![icon](public/icon.svg)
 
----
+> **Краткое описание:** Мой персональный портфолио-сайт Python backend-разработчика. Тёмная тема Kanagawa, шрифт JetBrains Mono, GitHub-style карточки проектов. 🌐 Вживую: https://shayden.ru
 
-## Стек технологий
+## 🛠 Стек
 
-| Слой          | Технология                                                          |
-| ------------- | ------------------------------------------------------------------- |
-| Framework     | [Next.js 16](https://nextjs.org) (App Router)                       |
-| UI-библиотека | [shadcn/ui](https://ui.shadcn.com) + [Base UI](https://base-ui.com) |
-| Стили         | [Tailwind CSS v4](https://tailwindcss.com)                          |
-| Иконки        | [Lucide React](https://lucide.dev)                                  |
-| Шрифты        | JetBrains Mono + Inter (Google Fonts)                               |
-| Язык          | TypeScript                                                          |
-| Деплой        | Собственный сайт [Shayden](https://shayden.ru)                      |
+| Слой      | Технология                  |
+| --------- | --------------------------- |
+| Framework | Next.js 16 (App Router)     |
+| UI        | shadcn/ui + Base UI         |
+| Стили     | Tailwind CSS v4             |
+| Иконки    | Lucide React                |
+| Шрифты    | JetBrains Mono + Inter      |
+| Язык      | TypeScript                  |
+| Деплой    | Docker + собственный сервер |
 
----
-
-## Архитектура
-
-```
-Однострочное SPA (Single Page Application)
-  └── Next.js App Router
-        ├── Server Components — layout, page (SEO, metadata)
-        └── Client Components — header (смена языка, мобильное меню)
-```
-
-Сайт полностью статичен — никакого бэкенда, баз данных и API-запросов.
-Все данные (проекты, стек, контакты) хранятся прямо в компонентах в виде TypeScript-объектов.
-Тема — Kanagawa Dark, реализована через CSS-переменные в `globals.css`.
-
----
-
-## Структура проекта
+## 🗄 Структура проекта
 
 ```
 my-dev-portfolio/
@@ -44,71 +26,79 @@ my-dev-portfolio/
 │   └── page.tsx           # Сборка всех секций
 │
 ├── components/
-│   ├── header.tsx         # Навигация, смена языка RU/EN, мобильное меню
-│   ├── hero.tsx           # Приветственная секция, мигающий курсор
-│   ├── tech-stack.tsx     # Сетка технологий (Languages, Frameworks, DB, DevOps)
+│   ├── header.tsx         # Навигация, переключатель RU/EN, мобильное меню
+│   ├── hero.tsx           # Главный экран с анимациями
+│   ├── tech-stack.tsx     # Сетка технологий
 │   ├── projects.tsx       # GitHub-style карточки проектов
-│   ├── contact.tsx        # Карточки соцсетей, подвал
+│   ├── contact.tsx        # Контакты и футер
 │   └── ui/
 │       └── button.tsx     # shadcn Button
 │
-├── public/                # Статика (иконки favicon)
-├── next.config.mjs
-├── tsconfig.json
-└── package.json
+├── public/                # Статика (SVG-фавикон)
+├── Dockerfile
+├── docker-compose.yml
+└── next.config.mjs
 ```
 
----
+## 💻 Запуск локально
 
-## Запуск локально
+### 📖 Требования
 
-### Требования
-
-- [Node.js](https://nodejs.org) **18+**
-- [pnpm](https://pnpm.io) (рекомендуется) или npm / yarn
+- **Node.js** 20+
+- **pnpm** (рекомендуется)
 
 ```bash
-# Установить pnpm глобально, если нет
 npm install -g pnpm
 ```
 
-### 1. Клонировать репозиторий
+### Установка и запуск
 
 ```bash
+# Клонировать репозиторий
 git clone https://github.com/Sh1yden/My-Dev-Portfolio.git
 cd My-Dev-Portfolio
-```
 
-### 2. Установить зависимости
-
-```bash
+# Установить зависимости
 pnpm install
-```
 
-### 3. Запустить dev-сервер
-
-```bash
+# Запустить dev-сервер
 pnpm dev
 ```
 
-Открыть в браузере: [http://localhost:3000](http://localhost:3000)
+Открыть: [http://localhost:3000](http://localhost:3000/)
 
-### 4. Сборка для продакшена
+### Сборка для продакшена
 
 ```bash
 pnpm build
 pnpm start
 ```
 
-### 5. Линтер
+## 🐳 Docker
 
 ```bash
-pnpm lint
+# Собрать и запустить
+docker compose up -d --build
+
+# Остановить
+docker compose down
 ```
 
----
+> Контейнер ожидает внешнюю Docker-сеть `internet_bridge`.
+> Создать её можно командой: `docker network create internet_bridge`
 
-## 💜 Вопросы, контакты
+## 🗄 Архитектура
+
+Полностью статичный SPA без бэкенда и API-запросов.
+Все данные (проекты, стек, контакты) — TypeScript-объекты прямо в компонентах.
+
+```
+Next.js App Router
+  ├── Server Components  — layout, page (SEO, метаданные)
+  └── Client Components  — header (язык, мобильное меню), hero (анимации)
+```
+
+## 💜 Вопросы, контакты / FAQ
 
 Для вопросов и предложений создавайте Issues в репозитории или же пишите в телеграмм который указан в профиле.
 
