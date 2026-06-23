@@ -2,15 +2,14 @@
 
 ![icon](public/icon.svg)
 
-> **Краткое описание:** Мой персональный портфолио-сайт Python backend-разработчика. Тёмная тема Kanagawa, шрифт JetBrains Mono, GitHub-style карточки проектов. 🌐 Вживую: https://shayden.ru
+> **Liquid Glass + Kanagawa** — персональное портфолио-сайт Python backend-разработчика. Темная и светлая темы, RU/EN, typewriter-эффект, glassmorphism. 🌐 Вживую: https://shayden.ru
 
 ## 🛠 Стек
 
 | Слой      | Технология                  |
 | --------- | --------------------------- |
 | Framework | Next.js 16 (App Router)     |
-| UI        | shadcn/ui + Base UI         |
-| Стили     | Tailwind CSS v4             |
+| UI        | Tailwind CSS v4             |
 | Иконки    | Lucide React                |
 | Шрифты    | JetBrains Mono + Inter      |
 | Язык      | TypeScript                  |
@@ -20,58 +19,66 @@
 
 ```
 my-dev-portfolio/
-├── app/
-│   ├── globals.css        # Kanagawa-тема, CSS-переменные, анимации
-│   ├── layout.tsx         # Метаданные, шрифты, viewport
-│   └── page.tsx           # Сборка всех секций
+├── src/
+│   ├── app/
+│   │   ├── globals.css        # Kanagawa Liquid Glass тема (dark + light)
+│   │   ├── layout.tsx         # Метаданные, шрифты, Providers
+│   │   └── page.tsx           # Сборка всех секций
+│   │
+│   ├── components/
+│   │   ├── portfolio/
+│   │   │   ├── providers.tsx  # Theme + Language контексты
+│   │   │   ├── header.tsx     # Навигация, переключатели темы/языка
+│   │   │   ├── hero.tsx       # Typewriter-эффект, mouse glow, orbs
+│   │   │   ├── tech-stack.tsx # Карточки технологий (glass)
+│   │   │   ├── projects.tsx   # GitHub-style карточки проектов
+│   │   │   └── contact.tsx    # Контакты + футер
+│   │   └── ui/                # UI-компоненты
+│   │
+│   └── hooks/                 # React hooks
 │
-├── components/
-│   ├── header.tsx         # Навигация, переключатель RU/EN, мобильное меню
-│   ├── hero.tsx           # Главный экран с анимациями
-│   ├── tech-stack.tsx     # Сетка технологий
-│   ├── projects.tsx       # GitHub-style карточки проектов
-│   ├── contact.tsx        # Контакты и футер
-│   └── ui/
-│       └── button.tsx     # shadcn Button
-│
-├── public/                # Статика (SVG-фавикон)
+├── public/                    # Статика (SVG-фавикон)
 ├── Dockerfile
 ├── docker-compose.yml
-└── next.config.mjs
+├── next.config.ts
+├── tsconfig.json
+├── postcss.config.mjs
+├── package.json
+└── bun.lock
 ```
 
 ## 💻 Запуск локально
 
-### 📖 Требования
+### Требования
 
 - **Node.js** 20+
-- **pnpm** (рекомендуется)
-
-```bash
-npm install -g pnpm
-```
+- **bun** (рекомендуется, но можно и pnpm/npm)
 
 ### Установка и запуск
 
 ```bash
-# Клонировать репозиторий
+# Клонировать
 git clone https://github.com/Sh1yden/My-Dev-Portfolio.git
 cd My-Dev-Portfolio
 
 # Установить зависимости
-pnpm install
+bun install
+# или: pnpm install
+# или: npm install
 
 # Запустить dev-сервер
-pnpm dev
+bun dev
+# или: pnpm dev
+# или: npm run dev
 ```
 
-Открыть: [http://localhost:3000](http://localhost:3000/)
+Открыть: http://localhost:3000
 
 ### Сборка для продакшена
 
 ```bash
-pnpm build
-pnpm start
+bun run build
+bun start
 ```
 
 ## 🐳 Docker
@@ -85,21 +92,19 @@ docker compose down
 ```
 
 > Контейнер ожидает внешнюю Docker-сеть `internet_bridge`.
-> Создать её можно командой: `docker network create internet_bridge`
+> Создать: `docker network create internet_bridge`
+
+## ✨ Фичи
+
+- **Liquid Glass** — полупрозрачные карточки с backdrop-blur и внутренними тенями
+- **Kanagawa** — тёмная и светлая палитры с переключением
+- **Typewriter** — cycling-эффект с рандомными фразами (RU/EN)
+- **RU / EN** — полный перевод контента, переключение в хедере
+- **Mouse glow** — следование за курсором
+- **Scroll reveal** — появление секций при скролле
+- **Progress bar** — градиентный индикатор прокрутки
 
 ## 🗄 Архитектура
 
-Полностью статичный SPA без бэкенда и API-запросов.
-Все данные (проекты, стек, контакты) — TypeScript-объекты прямо в компонентах.
-
-```
-Next.js App Router
-  ├── Server Components  — layout, page (SEO, метаданные)
-  └── Client Components  — header (язык, мобильное меню), hero (анимации)
-```
-
-## 💜 Вопросы, контакты / FAQ
-
-Для вопросов и предложений создавайте Issues в репозитории или же пишите в телеграмм который указан в профиле.
-
-PS Любой помощи или совету буду очень благодарен.
+Статичный SPA без бэкенда и API.
+Данные (проекты, стек, контакты) — TypeScript-объекты прямо в компонентах.
