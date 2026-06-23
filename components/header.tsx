@@ -1,0 +1,127 @@
+"use client";
+
+import { useState } from "react";
+import { GitFork, Menu, X } from "lucide-react";
+
+type Lang = "RU" | "EN";
+
+const navLinks: Record<Lang, { label: string; href: string }[]> = {
+  RU: [
+    { label: "Стек", href: "#stack" },
+    { label: "Проекты", href: "#projects" },
+    { label: "Контакты", href: "#contact" },
+  ],
+  EN: [
+    { label: "Stack", href: "#stack" },
+    { label: "Projects", href: "#projects" },
+    { label: "Contact", href: "#contact" },
+  ],
+};
+
+export function Header() {
+  const [open, setOpen] = useState(false);
+  const [lang, setLang] = useState<Lang>("RU");
+
+  const links = navLinks[lang];
+
+  const toggleLang = () => setLang((l) => (l === "RU" ? "EN" : "RU"));
+
+  return (
+    <header className="fixed top-0 left-0 right-0 z-50 border-b border-border bg-background/80 backdrop-blur-md">
+      <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
+        {/* Logo */}
+        <a
+          href="#"
+          className="font-mono text-sm font-semibold text-[#769] hover:text-[#769]/80 transition-colors"
+          aria-label="Главная"
+        >
+          &gt; shayden.ru
+        </a>
+
+        {/* Desktop nav */}
+        <nav
+          className="hidden items-center gap-6 md:flex"
+          aria-label="Основная навигация"
+        >
+          {links.map((link) => (
+            <a
+              key={link.href}
+              href={link.href}
+              className="font-mono text-xs text-muted-foreground transition-colors hover:text-foreground"
+            >
+              {link.label}
+            </a>
+          ))}
+
+          <a
+            href="https://github.com/Sh1yden/My-Dev-Portfolio"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="GitHub"
+            className="text-muted-foreground transition-colors hover:text-foreground"
+          >
+            <GitFork className="size-4" />
+          </a>
+
+          <button
+            type="button"
+            onClick={toggleLang}
+            className="cursor-pointer font-mono text-xs border border-border rounded px-2 py-1 text-muted-foreground hover:text-foreground hover:border-foreground/30 transition-colors"
+            aria-label="Переключить язык"
+          >
+            {lang === "RU" ? "RU / EN" : "EN / RU"}
+          </button>
+        </nav>
+
+        {/* Mobile menu button */}
+        <button
+          type="button"
+          className="md:hidden text-muted-foreground hover:text-foreground transition-colors"
+          onClick={() => setOpen(!open)}
+          aria-label={open ? "Закрыть меню" : "Открыть меню"}
+          aria-expanded={open}
+        >
+          {open ? <X className="size-5" /> : <Menu className="size-5" />}
+        </button>
+      </div>
+
+      {/* Mobile nav */}
+      {open && (
+        <nav
+          className="border-t border-border bg-background/95 px-6 py-4 md:hidden flex flex-col gap-4"
+          aria-label="Мобильная навигация"
+        >
+          {links.map((link) => (
+            <a
+              key={link.href}
+              href={link.href}
+              onClick={() => setOpen(false)}
+              className="font-mono text-sm text-muted-foreground transition-colors hover:text-foreground"
+            >
+              {link.label}
+            </a>
+          ))}
+          <div className="flex items-center gap-4 pt-2 border-t border-border">
+            <a
+              href="https://github.com/Sh1yden/My-Dev-Portfolio"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="GitHub"
+              className="text-muted-foreground transition-colors hover:text-foreground"
+            >
+              <GitFork className="size-4" />
+            </a>
+            <button
+              type="button"
+              onClick={toggleLang}
+              className="cursor-pointer font-mono text-xs border border-border rounded px-2 py-1 text-muted-foreground hover:text-foreground transition-colors"
+              aria-label="Переключить язык"
+            >
+              {lang === "RU" ? "RU / EN" : "EN / RU"}
+            </button>
+          </div>
+        </nav>
+      )}
+    </header>
+  );
+}
