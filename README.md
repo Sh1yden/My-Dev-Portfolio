@@ -2,7 +2,7 @@
 
 ![icon](public/icon.svg)
 
-> **Краткое описание:** Мой персональный портфолио-сайт Python backend-разработчика. Тёмная тема Kanagawa, шрифт JetBrains Mono, GitHub-style карточки проектов. 🌐 Вживую: https://shayden.ru
+> **Краткое описание:** Мой персональный портфолио-сайт Python backend-разработчика. Тёмная тема Kanagawa, шрифт JetBrains Mono, GitHub-style карточки проектов. 🌐 Вживую: [Shayden.ru](https://shayden.ru).
 
 ## 🛠 Стек
 
