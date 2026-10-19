@@ -48,6 +48,7 @@ export function Providers({ children }: { children: ReactNode }) {
   useEffect(() => {
     const savedTheme = localStorage.getItem("theme") as Theme | null;
     const savedLang = localStorage.getItem("lang") as Lang | null;
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- hydrate persisted preferences after mount (SSR-safe pattern)
     if (savedTheme) setTheme(savedTheme);
     if (savedLang) setLang(savedLang);
     setMounted(true);

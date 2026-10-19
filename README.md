@@ -2,42 +2,52 @@
 
 ![icon](public/icon.svg)
 
-> **Краткое описание:** Мой персональный портфолио-сайт Python backend-разработчика. Тёмная тема Kanagawa, шрифт JetBrains Mono, GitHub-style карточки проектов. 🌐 Вживую: [Shayden.ru](https://shayden.ru).
+> **Краткое описание:** Мой персональный портфолио-сайт Python backend-разработчика. Тёмная тема Kanagawa, шрифт JetBrains Mono, GitHub-style карточки проектов с автосинхронизацией закреплённых репозиториев. 🌐 Вживую: [Shayden.ru](https://shayden.ru).
 
 ## 🛠 Стек
 
-| Слой      | Технология                  |
-| --------- | --------------------------- |
-| Framework | Next.js 16 (App Router)     |
-| UI        | shadcn/ui + Base UI         |
-| Стили     | Tailwind CSS v4             |
-| Иконки    | Lucide React                |
-| Шрифты    | JetBrains Mono + Inter      |
-| Язык      | TypeScript                  |
-| Деплой    | Docker + собственный сервер |
+| Слой      | Технология                    |
+| --------- | ----------------------------- |
+| Framework | Next.js 16 (App Router)       |
+| UI        | shadcn/ui + Base UI           |
+| Стили     | Tailwind CSS v4               |
+| Иконки    | Lucide React                  |
+| Шрифты    | JetBrains Mono + Inter        |
+| Язык      | TypeScript                    |
+| Данные    | GitHub GraphQL (pinned repos) |
+| Деплой    | Docker + собственный сервер   |
 
 ## 🗄 Структура проекта
 
 ```
 my-dev-portfolio/
-├── app/
-│   ├── globals.css        # Kanagawa-тема, CSS-переменные, анимации
-│   ├── layout.tsx         # Метаданные, шрифты, viewport
-│   └── page.tsx           # Сборка всех секций
+├── src/
+│   ├── app/
+│   │   ├── globals.css        # Kanagawa-тема, CSS-переменные, анимации
+│   │   ├── layout.tsx         # Метаданные, шрифты
+│   │   └── page.tsx           # Сборка секций, ISR (revalidate = 3600)
+│   │
+│   ├── components/portfolio/
+│   │   ├── header.tsx         # Навигация, переключатель RU/EN, мобильное меню
+│   │   ├── hero.tsx           # Главный экран с анимациями
+│   │   ├── tech-stack.tsx     # Сетка технологий
+│   │   ├── projects.tsx       # Server-компонент: получает pinned-репозитории
+│   │   ├── projects-grid.tsx  # Карточки проектов (клиент: анимации, RU/EN)
+│   │   ├── contact.tsx        # Контакты
+│   │   ├── footer.tsx         # Подвал: навигация, соцсети, «наверх»
+│   │   ├── icons.tsx          # Иконки соцсетей (общие)
+│   │   └── providers.tsx      # Контекст темы и языка
+│   │
+│   ├── data/
+│   │   └── projects-fallback.ts  # Аварийный снапшот закреплённых репо
+│   │
+│   └── lib/
+│       └── github.ts          # GitHub GraphQL: закреплённые репозитории
 │
-├── components/
-│   ├── header.tsx         # Навигация, переключатель RU/EN, мобильное меню
-│   ├── hero.tsx           # Главный экран с анимациями
-│   ├── tech-stack.tsx     # Сетка технологий
-│   ├── projects.tsx       # GitHub-style карточки проектов
-│   ├── contact.tsx        # Контакты и футер
-│   └── ui/
-│       └── button.tsx     # shadcn Button
-│
-├── public/                # Статика (SVG-фавикон)
+├── public/                    # Статика (SVG-фавикон)
+├── .env.example               # Шаблон переменных окружения
 ├── Dockerfile
-├── docker-compose.yml
-└── next.config.mjs
+└── docker-compose.yml
 ```
 
 ## 💻 Запуск локально
@@ -60,6 +70,10 @@ cd My-Dev-Portfolio
 
 # Установить зависимости
 pnpm install
+
+# (опционально) переменные окружения для синхронизации с GitHub
+cp .env.example .env.local
+# → вписать GITHUB_TOKEN, см. раздел «Синхронизация проектов»
 
 # Запустить dev-сервер
 pnpm dev
@@ -87,15 +101,59 @@ docker compose down
 > Контейнер ожидает внешнюю Docker-сеть `internet_bridge`.
 > Создать её можно командой: `docker network create internet_bridge`
 
+> Для сборки с живыми данными GitHub положите `.env` с `GITHUB_TOKEN`
+> рядом с `docker-compose.yml`: Next.js прочитает его при сборке образа,
+> а Compose — при запуске контейнера. Из готового образа файл удаляется,
+> в контейнере токен живёт только как переменная окружения. Обратите
+> внимание: значение остаётся в кэше builder-слоёв Docker на машине
+> сборки, поэтому токен должен быть без прав (public read-only).
+> Без токена сайт соберётся со снапшотом из `projects-fallback.ts`
+> и обновится при ISR-регенерации.
+
 ## 🗄 Архитектура
 
-Полностью статичный SPA без бэкенда и API-запросов.
-Все данные (проекты, стек, контакты) — TypeScript-объекты прямо в компонентах.
+Статически сгенерированная страница (App Router) с часовой ISR-регенерацией.
+Стек, контакты и подвал — TypeScript-объекты в компонентах; проекты
+подтягиваются с GitHub при регенерации страницы.
 
 ```
-Next.js App Router
-  ├── Server Components  — layout, page (SEO, метаданные)
-  └── Client Components  — header (язык, мобильное меню), hero (анимации)
+GitHub GraphQL (pinnedItems, read-only токен)
+        │
+        ▼
+src/lib/github.ts   — getPinnedRepos() + fallback при сбое/без токена
+        │
+        ▼
+src/app/page.tsx    — revalidate = 3600 (ISR)
+        │
+        ▼
+Projects (server) → ProjectsGrid (client: RU/EN, анимации)
+```
+
+## 🔁 Синхронизация проектов с GitHub
+
+Секция «Проекты» показывает репозитории, **закреплённые** в профиле
+[github.com/Sh1yden](https://github.com/Sh1yden) (блок «Pinned»).
+
+- Порядок карточек = порядок закрепа. Закрепили репозиторий — он появится
+  на сайте (в течение часа), открепили — исчезнет.
+- Описание, язык, цвет языка и звёзды берутся как есть из GitHub.
+  Чтобы поправить текст карточки — отредактируйте description репозитория.
+- Данные обновляются при ISR-регенерации раз в час. Если GitHub недоступен
+  или токен не задан — используется снапшот `src/data/projects-fallback.ts`
+  (последний успешный ответ остаётся в памяти процесса до следующей попытки).
+
+Токену не нужны никакие права — читаются только публичные данные.
+Подойдёт **classic PAT вообще без скобов**
+([создать](https://github.com/settings/tokens/new)).
+
+| Где     | Файл                              | Кто читает                                |
+| ------- | --------------------------------- | ----------------------------------------- |
+| Локально | `.env.local` (или `.env`)         | Next.js при `pnpm dev` / `pnpm build`     |
+| Сервер  | `.env` рядом с `docker-compose.yml` | Compose (подстановка) + сборка образа |
+
+```bash
+GITHUB_TOKEN=ghp_...
+GITHUB_USERNAME=Sh1yden   # опционально, это значение по умолчанию
 ```
 
 ## 💜 Вопросы, контакты / FAQ

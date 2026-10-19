@@ -43,6 +43,7 @@ export function Hero() {
 
   // Typewriter
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- reset the typewriter when the language changes
     setDisplayed("");
     setPhase("typing");
     setPhraseIdx(0);

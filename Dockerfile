@@ -32,6 +32,10 @@ COPY --from=builder /app/public ./public
 COPY --from=builder --chown=nextjs:nodejs /app/.next/standalone ./
 COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
 
+# Next.js copies .env* into the standalone output; drop secrets from the image.
+# At runtime the token comes from compose environment instead.
+RUN rm -f .env .env.local
+
 USER nextjs
 
 EXPOSE 3000

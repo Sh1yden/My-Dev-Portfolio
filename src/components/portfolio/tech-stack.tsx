@@ -103,7 +103,7 @@ export function TechStack() {
     <section id="stack" className="py-28 px-6" aria-labelledby="stack-heading">
       <div className="mx-auto max-w-6xl">
         <div className="mb-14">
-          <p className="section-label mb-2" style={{ color: "var(--t-prompt)" }}>// 01</p>
+          <p className="section-label mb-2" style={{ color: "var(--t-prompt)" }}>{"// 01"}</p>
           <h2 id="stack-heading" className="font-mono text-2xl font-bold sm:text-3xl">
             {t("Стек технологий", "Tech Stack")}
           </h2>
